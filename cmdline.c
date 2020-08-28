@@ -172,18 +172,18 @@ tristate_t cmdlineParseTriState(const char* optname, const char* optarg) {
     }
     if ((strcasecmp(optarg, "0") == 0) || (strcasecmp(optarg, "false") == 0) ||
         (strcasecmp(optarg, "n") == 0) || (strcasecmp(optarg, "no") == 0)) {
-        return false;
+        return HF_NO;
     }
     if ((strcasecmp(optarg, "1") == 0) || (strcasecmp(optarg, "true") == 0) ||
         (strcasecmp(optarg, "y") == 0) || (strcasecmp(optarg, "yes") == 0)) {
-        return true;
+        return HF_YES;
     }
     if ((strcasecmp(optarg, "-1") == 0) || (strcasecmp(optarg, "maybe") == 0) ||
         (strcasecmp(optarg, "m") == 0) || (strcasecmp(optarg, "if_supported") == 0)) {
-        return true;
+        return HF_MAYBE;
     }
     LOG_F("Unknown value for option --%s=%s. Use true, false or maybe", optname, optarg);
-    return false;
+    return HF_NO;
 }
 
 bool cmdlineParseTrueFalse(const char* optname, const char* optarg) {
